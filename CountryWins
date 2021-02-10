@@ -1,0 +1,35 @@
+{
+
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json", 
+
+  "data": {
+    "url": "https://raw.githubusercontent.com/dervlascully/TourDeFrance/main/TourDeFranceData.csv", 
+    "format": {
+      "type": "csv" }
+  }, 
+
+  "mark" : "bar",
+  "encoding": 
+  {
+    "y" : 
+    {
+      "field" : "Winner Nationality",
+      "type" : "nominal",
+      "sort" : {
+        "op" : "count",
+        "order" : "descending"
+      }
+    },
+    "x" : 
+    {
+      "field" : "Winner Nationality",
+      "type" : "nominal",
+      "aggregate" : "count"
+    }
+  }
+
+
+}
+
+
+
