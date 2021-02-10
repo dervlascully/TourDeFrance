@@ -1,0 +1,223 @@
+{
+
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json", 
+
+
+  "data": 
+  {
+    "url": "https://raw.githubusercontent.com/dervlascully/TourDeFrance/main/TourDeFranceData.csv", 
+
+    "format": 
+    {
+      "type": "csv" 
+    }
+  },
+
+  "width": 750,
+  "height": 350,
+  
+
+  "encoding": 
+  {
+    "x": 
+    {
+      "timeUnit": "year", 
+      "field": "year",
+      "title" : "Year",
+      "axis": 
+        {
+          "labelFontSize" : 10,
+          "titleFontSize" : 13,
+          "titlePadding" : 15,
+          "tickCount" : 10,
+          "grid": true,
+          "gridOpacity" : 0.2,
+          "offset": 10
+        }
+      }
+  },
+  "layer": [
+
+      {
+
+        "mark": 
+        {
+          "type" : "line", 
+          "interpolate": "natural",
+          "color" : "#ef8e3b",
+          "point" : true,
+          "size" : 1.8
+        },
+
+
+        "encoding": 
+        {
+
+
+          "y": 
+          {
+            "field": "Distance", 
+            "type": "quantitative",
+            "scale": {"zero": false},
+            "title" : "Total Distance (km)",
+            
+            
+            "axis": 
+            {
+              "titleColor":"#ef8e3b",
+              "labelFontSize" : 10,
+              "titleFontSize" : 13,
+              "titlePadding" : 15,
+              "offset": 10
+            }
+          },
+
+
+          "color": 
+          {
+            "datum": "Distance"
+          },
+
+
+          "tooltip": 
+          [
+            {
+              "field": "Winner Name", 
+              "type": "nominal",
+              "title" : "Winner's Name"
+            },
+            {
+              "field": "year", 
+              "timeUnit" : "year",
+              "title" : "Year"
+            },             
+            {
+              "field" : "Average Speed of Winner",
+              "type" : "quantitative",
+              "title" : "Average Speed of Winner (km/hr)",
+              "format": ".2f"
+            },
+            {
+              "field" : "Distance",
+              "type" : "quantitative",
+              "title" : "Total Distance (km)"
+            }
+          ]
+
+
+        }
+    },
+    {
+
+
+        "mark": 
+        {
+          "type" : "line", 
+          "interpolate": "natural",
+          "color" : "#5079a5",
+          "point" : true
+        },
+
+
+        "encoding": 
+        {
+
+
+          "y": 
+          {
+            "field": "Average Speed of Winner", 
+            "type": "quantitative",
+            "scale": {"zero": false},
+            "title" : "Average Speed of Winner (km / hr)",
+            
+            
+            "axis": 
+            {
+              "titleColor":"#5079a5",
+              "labelFontSize" : 11,
+              "titleFontSize" : 13,
+              "titlePadding" : 15,
+              "tickCount" : 12,
+              "offset": 10
+            }
+          },
+
+
+          "color": 
+          {
+            "datum": "Average Speed of Winner"
+            },
+
+
+          "tooltip": 
+          [
+            {
+              "field": "Winner Name", 
+              "type": "nominal",
+              "title" : "Winner's Name"
+            },
+            {
+              "field": "year", 
+              "timeUnit" : "year",
+              "title" : "Year"
+            },             
+            {
+              "field" : "Average Speed of Winner",
+              "type" : "quantitative",
+              "title" : "Average Speed of Winner (km/hr)",
+              "format": ".2f"
+            },
+            {
+              "field" : "Distance",
+              "type" : "quantitative",
+              "title" : "Total Distance (km)"
+            }
+          ]
+
+
+        }
+    }
+  ],
+
+
+
+  "title": 
+  {
+    "text": "Total Distance & Average Speed of Winner", 
+    "anchor": "middle",
+    "fontSize" : 14,
+    "subtitle" : "Tour De France",
+    "subtitlePadding" : 10,
+    "subtitleFontSize" : 12,
+    "subtitleFontWeight" : "bold"
+  },
+
+
+
+  "resolve": 
+  {
+    "scale": 
+    {
+      "y": "independent"
+    }
+  },
+
+
+
+  "config": 
+  { 
+    "legend": 
+    {
+      "orient":"bottom-right",
+      "labelFontSize" : 12,
+      "symbolStrokeWidth" : 8,
+      "symbolType" : "stroke"
+    },
+    "point": 
+    {
+      "size" : 7
+    }
+  }
+
+
+}
