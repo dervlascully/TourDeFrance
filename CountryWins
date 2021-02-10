@@ -8,27 +8,127 @@
       "type": "csv" }
   }, 
 
-  "mark" : "bar",
-  "encoding": 
-  {
-    "y" : 
-    {
-      "field" : "Winner Nationality",
-      "type" : "nominal",
-      "sort" : {
-        "op" : "count",
-        "order" : "descending"
+  "hconcat": 
+  [
+      {
+
+      "height" : 400,
+      "width" : 200,
+
+      "mark" : 
+      {
+        "type" : "bar",
+        "size" : 25
+      },
+      "encoding": 
+      {
+        "y" : 
+        {
+          "field" : "Winner Nationality",
+          "type" : "nominal",
+          "sort" : 
+          {
+            "field" : "Winner Nationality",
+            "op" : "count",
+            "order" : "descending"
+          },
+          "axis": 
+          {
+            "labelFontSize" : 10,
+            "titleFontSize" : 12,
+            "titlePadding" : 15,
+            "offset": 5,
+            "title" : null
+          }         
+        },
+        "x" : 
+        {
+          "field" : "Winner Nationality",
+          "type" : "nominal",
+          "aggregate" : "count",
+          "axis": 
+          {
+            "labelFontSize" : 10,
+            "titleFontSize" : 10,
+            "titlePadding" : 15,
+            "offset": 5,
+            "title" : "Count of Wins",
+            "tickCount" : 5,
+            "gridOpacity" : 0.4
+          }  
+        },
+        "opacity" : {"value": 0.8}
       }
     },
-    "x" : 
-    {
-      "field" : "Winner Nationality",
-      "type" : "nominal",
-      "aggregate" : "count"
+
+          {
+
+      "mark" : 
+      {
+        "type" : "bar",
+        "size" : 25
+      },
+      "encoding": 
+      {
+        "y" : 
+        {
+          "field" : "Winner Nationality",
+          "type" : "nominal",
+          "sort" : 
+          {
+            "field" : "Winner Nationality",
+            "op" : "count",
+            "order" : "descending"
+          },
+          "axis": 
+          {
+            "labelFontSize" : 10,
+            "titleFontSize" : 12,
+            "titlePadding" : 15,
+            "offset": 5,
+            "title" : null
+          }            
+        },
+        "x" : 
+        {
+          "field" : "stage_wins",
+          "type" : "quantitative",
+          "aggregate" : "sum",
+
+          "axis": 
+          {
+            "labelFontSize" : 10,
+            "titleFontSize" : 10,
+            "titlePadding" : 15,
+            "offset": 5,
+            "title" : "Count of Stage Wins",
+            "tickCount" : 5,
+            "gridOpacity" : 0.4
+          }           
+        },
+        "opacity" : {"value": 0.8}
+      }
     }
+  ],
+  "resolve": 
+  {
+    "scale": 
+    {
+      "y": "shared"
+    }
+  },
+
+  "title": 
+  {
+    "text": "Count of Wins and Stage Wins by Country", 
+    "anchor": "middle",
+    "fontSize" : 12,
+    "subtitle" : "Tour De France",
+    "subtitlePadding" : 10,
+    "subtitleFontSize" : 11,
+    "subtitleFontWeight" : "bold"
   }
-
-
+    
 }
 
 
