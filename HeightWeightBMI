@@ -1,0 +1,61 @@
+{
+
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json", 
+
+
+  "data": 
+  {
+    "url": "https://raw.githubusercontent.com/dervlascully/TourDeFrance/main/TourDeFranceData.csv", 
+
+    "format": 
+    {
+      "type": "csv" 
+    }
+  },
+
+  "transform": [
+    {
+      "filter": "datum.Weight > 0"}, 
+    {
+      "filter": "datum.Height > 0" },
+      {
+      "calculate": 
+      "datum.Weight / ( datum.Height / 100 * datum.Height / 100)",         
+      "as": "BMI"}
+  ],
+
+  "repeat": 
+  {
+    "column": ["Weight", "Height", "BMI"] 
+  },
+
+
+  "spec": {
+
+
+      "mark" : "bar",
+  
+      "height" : 300,
+      "width" : 200,
+
+      "encoding":{
+        "x" : {
+            "bin" : {"maxbins" : 20},
+            "field" : {"repeat": "column"},
+            "type" : "quantitative"
+        },
+
+        "y":{
+          "aggregate" : "count",
+          "type":"quantitative",
+          "stack" : false
+
+        },
+
+        "opacity" : {"value": 0.7}
+      }
+
+  }
+
+
+}
