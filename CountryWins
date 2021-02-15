@@ -47,7 +47,7 @@
             "titlePadding" : 15,
             "offset": 5,
             "title" : "Number of Wins",
-            "tickCount" : 5,
+            "tickCount" : 10,
             "gridOpacity" : 0.4
           }  
         },
@@ -68,7 +68,8 @@
     "legend": 
     {
       "orient":"bottom-right",
-      "labelFontSize" : 12
+      "labelFontSize" : 11,
+      "symbolSize" : 200
     }
   },
   "title": 
