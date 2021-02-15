@@ -236,7 +236,8 @@
               {
                 "field" :  "BMI",
                 "type" : "quantitative",
-                "scale": {"zero": false, "domain" : [19, 28]} ,
+                "scale": {"zero": false, "domain" : [19, 28]},
+                "title" : "BMI (kg / m2 )",
                 "axis": 
                 {
                   "labelFontSize" : 10,
