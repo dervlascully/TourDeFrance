@@ -44,7 +44,6 @@
         {
           "type" : "line", 
           "interpolate": "natural",
-          "color" : "#ef8e3b",
           "point" : true,
           "size" : 1.8
         },
@@ -64,7 +63,7 @@
             
             "axis": 
             {
-              "titleColor":"#ef8e3b",
+              "titleColor":"#5079a5",
               "labelFontSize" : 10,
               "titleFontSize" : 13,
               "titlePadding" : 15,
@@ -114,7 +113,6 @@
         {
           "type" : "line", 
           "interpolate": "natural",
-          "color" : "#5079a5",
           "point" : true
         },
 
@@ -133,7 +131,7 @@
             
             "axis": 
             {
-              "titleColor":"#5079a5",
+              "titleColor":"#ef8e3b",
               "labelFontSize" : 11,
               "titleFontSize" : 13,
               "titlePadding" : 15,
