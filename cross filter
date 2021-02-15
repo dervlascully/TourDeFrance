@@ -104,6 +104,7 @@
           ]
         },
         {
+          
           "mark" : "tick",
           "width" : 300,
 
@@ -129,6 +130,10 @@
               {
                 "field" : "Winner Name",        
                 "type" : "nominal"
+              },
+              {
+                "field" : "year",
+                "title" : "Year"
               },
               {
                 "field" : "Weight",
@@ -180,6 +185,7 @@
                   "aggregate" : "count",
                   "type":"quantitative",
                   "scale" : {"domain" : [0, 18]},
+                  "title" : " ",
                   "axis": 
                     {
                       "labelFontSize" : 10,
@@ -258,6 +264,10 @@
                 "type" : "nominal"
               },
               {
+                "field" : "year",
+                "title" : "Year"
+              },
+              {
                 "field" : "Weight",
                  "title" : "Weight (kg)",
                 "type" : "nominal"
@@ -271,7 +281,7 @@
                 "field" : "BMI",
                 "type" : "nominal",
                 "format": ".2f"
-              }    
+              }
            ]
           }
         }
@@ -307,6 +317,7 @@
                   "aggregate" : "count",
                   "type":"quantitative",
                   "scale" : {"domain" : [0, 10]},
+                  "title" : " ",
                   "axis": 
                     {
                       "labelFontSize" : 10,
@@ -357,6 +368,7 @@
           ]
         },
         {
+          
           "mark" : "tick",
           "width" : 300,
 
@@ -382,6 +394,10 @@
               {
                 "field" : "Winner Name",        
                 "type" : "nominal"
+              },
+              {
+                "field" : "year",
+                "title" : "Year"
               },
               {
                 "field" : "Weight",
@@ -420,7 +436,7 @@
     "text": "Histogram with Strip Plot of Weight, Height, BMI", 
     "anchor": "middle",
     "fontSize" : 14,
-    "subtitle" : "Tour De France Winners",
+    "subtitle" : "Tour de France Winners",
     "subtitlePadding" : 10,
     "subtitleFontSize" : 12,
     "subtitleFontWeight" : "bold"
