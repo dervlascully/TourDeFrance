@@ -60,7 +60,26 @@
             "domain": ["1900-1929", "1930-1959", "1960-1989", "1990-2019"],
             "scheme":  "tableau10"
           }
-        }
+        },
+        "tooltip": [
+                {
+                  "field" : "Winner Nationality",        
+                  "type" : "nominal",
+                  "title" : "Country"
+                },
+                {
+                  "field" : "Year Range",
+                  "title" : "Year Range",
+                  "type" : "nominal"
+                },
+                {
+                  "field" : "year",
+                  "title" : "Year Range Count",
+                  "type" : "quantitative",
+                  "aggregate" : "count"
+                }
+
+            ]
       },
 
       "config": 
