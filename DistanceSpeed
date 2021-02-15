@@ -67,7 +67,12 @@
               "labelFontSize" : 10,
               "titleFontSize" : 13,
               "titlePadding" : 15,
-              "offset": 10
+              "offset": 10,
+              "domainColor" : "#5079a5",
+              "domainWidth" : 2,
+              "tickCount" : 11,
+              "gridOpacity" : 0.2,
+              "grid": true
             }
           },
 
@@ -135,8 +140,10 @@
               "labelFontSize" : 11,
               "titleFontSize" : 13,
               "titlePadding" : 15,
-              "tickCount" : 12,
-              "offset": 10
+              "tickCount" : 10,
+              "offset": 10,
+              "domainColor" : "#ef8e3b",
+              "domainWidth" : 2 
             }
           },
 
