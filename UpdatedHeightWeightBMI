@@ -24,6 +24,7 @@
 
   "hconcat" : [
 
+
     {
       "vconcat": [
         {
@@ -32,6 +33,7 @@
 
           "height" : 300,
           "width" : 300,
+          
 
           "encoding":{
             "x" : {
@@ -57,7 +59,17 @@
                   "gridOpacity" : 0.4
                 }
             },
-            "opacity" : {"value": 0.8} 
+            "opacity" : {"value": 0.8},
+            "tooltip": 
+            [
+              {
+                "field" : "Weight",        
+                "type" : "quantitative",
+                "aggregate" : "count",
+                "title" : "Count"
+              } 
+            ]
+
           }
         },
 
@@ -140,7 +152,16 @@
                   "gridOpacity" : 0.4
                 }
             },
-            "opacity" : {"value": 0.8} 
+            "opacity" : {"value": 0.8},
+                        "tooltip": 
+            [
+              {
+                "field" : "Height",        
+                "type" : "quantitative",
+                "aggregate" : "count",
+                "title" : "Count"
+              } 
+            ]
           }
         },
 
@@ -223,7 +244,16 @@
                   "gridOpacity" : 0.4
                 }
             },
-            "opacity" : {"value": 0.8} 
+            "opacity" : {"value": 0.8},
+                        "tooltip": 
+            [
+              {
+                "field" : "BMI",        
+                "type" : "quantitative",
+                "aggregate" : "count",
+                "title" : "Count"
+              } 
+            ]
           }
         },
 
