@@ -7,8 +7,8 @@
     "format": {
       "type": "csv" }
   }, 
-  "height" : 550,
-  "width" : 450,
+  "height" : 650,
+  "width" : 600,
 
         "mark" : 
       {
