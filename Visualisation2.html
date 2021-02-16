@@ -1,0 +1,246 @@
+<html>
+   <head>
+      <title> Visualisation 2 - Dervla Scully</title>
+<script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-lite@4"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+      <style>
+         body {
+         font-family: sans-serif;
+         }
+      </style>
+   </head>
+   <body>
+      <table style="width: 850px;" cellspacing="5" cellpadding="5">
+         <tbody>
+            <tr>
+               <td style="width: 200px; vertical-align: top;"><strong>Name:&nbsp;</strong></td>
+               <td style="vertical-align: top;">Dervla Scully</td>
+            </tr>
+            <tr>
+               <td style="vertical-align: top;"><strong>Student Number:</strong></td>
+               <td style="vertical-align: top;">18329511</td>
+            </tr>
+            <tr>
+               <td style="vertical-align: top;">
+                    <strong>Dataset description:</strong>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>
+                        <a href="https://raw.githubusercontent.com/dervlascully/TourDeFrance/main/TourDeFranceData.csv" target="_blank" rel="noopener">Tour De France Dataset</a>
+                        
+                    </p>
+                    <p>This dataset contains information on the winners of the Tour De France, the annual mens cycling race, from its initial edition in 1903, to 2019. 
+                    It provides information on the winners such as name and nationality, and physical attributes such as height and weight. 
+                    It also provides race details such as the total distance, the overall time and margin times of the winner, the number of stages 
+                    led and won by the winner, and the date of the race. For this visualisation I focused on the winner&#39;s nationalities.</p>
+                </td>
+            </tr>
+            <tr>
+               <td style="vertical-align: top;"><strong>Initial questions</strong></td>
+               <td style="vertical-align: top;">What countries have won the most Tour De France editions? Is this consistent over time?<br><br><br></td>
+            </tr>
+         </tbody>
+      </table>
+ 
+      <div id="vis"></div>
+
+      <table style="width: 850px;" cellspacing="5" cellpadding="5">
+         <tbody>
+            <tr>
+               <td style="width: 200px; vertical-align: top;"><strong><br>Description:&nbsp;</strong></td>
+               <td style="vertical-align: top;"><br>The horizontal bar chart shows the count of the number of editions of the Tour de France 
+               won by each country. The bars are sorted in descending order by the total number of wins. The chart is a stack bar chart, 
+               where the bars are divided into year ranges each with a different colour, and each section of bar represents the number of 
+               race editions won within that year range. The year ranges each span 30 years, with an overall span from 1900 to 2019. The bars 
+               are stacked in ascending time order, starting with the count for 1900-1929, followed by 1930-1959, 1960-1989 and 1990-2019. By 
+               hovering over any section of a bar the country name, year range for that section of the bar, as well as the count for that year 
+               range is displayed using a tooltip. The year ranges corresponding to each colour are displayed on the legend in the bottom right 
+               corner.</td>
+            </tr>
+            <tr>
+               <td style="vertical-align: top;"><strong>Insight:</strong></td>
+               <td style="vertical-align: top;">At a first glance we can immediately identify the countries with the most / least number of Tour de 
+               France wins overall. We can see that France has the most wins with 36, followed by Belgium with 18, Spain with 15, Italy and the 
+               United States with 10, Great Britain with 6, Luxembourg with 5, Switzerland and the Netherlands with 2, and Ireland, Denmark, Germany, 
+               Australia and Colombia with 1.
+
+Although France has the most wins overall, they have not had a win in the past 30 years. We can see this as there is no bar for the range 1990-2019 for 
+France, indicating a count of 0. We can see that France had about 9 wins from 1900 to 1929, 12 wins from 1930-1959, 15 wins from 1960-1989, followed by 
+0 wins from 1990-2019. We know from the size of the bars that for the first 3 year ranges France had the most number of wins in each range, before dropping 
+to zero in the final range. This shows that France dominated the field for the first 60 years, but in recent years has not been quite so dominant.<br><br>
+
+Similarly with Belgium who had the second highest number of wins overall we can see 9 wins in the first 30 years, 3 in the next, 6 in the next, and then 
+0 in the final 30 years.<br><br>
+
+Spain has the third highest number of wins. We can immediately see that these wins are predominantly in the last 30 years. Spain did not have any wins 
+from 1900-1929, had 1 win between 1930-1959 and 2 wins between 1960-1989, and then had 9 wins between 1990 and 2019. So with only 3 wins in total in 
+the first 90 years, Spain won 30% of the Tour de France editions in the 30 most recent editions.<br><br>
+
+Italy had the fourth highest number of wins, and these wins are relatively evenly dispersed between each year range. Italy had 2 wins in the first 30 
+years, 4 in the next, 2 again between 1960-1989, and 2 in the final 30 years.<br><br>
+
+The United States also had the fourth highest number of wins with 10 total, however we can see that all of these wins were in the last 60 years, and 
+predominantly in the last 30. The United States had 2 wins between 1960-1989, and 8 wins between 1990-2019. So the US won about 27% of the race editions 
+in the last 30 years.<br><br>
+
+For Luxembourg we can see 3 wins in the first 30 years, and 1 win in the second and third 30 year ranges, followed by 0 wins in the last 30 years. 
+We can see that the Netherlands and Ireland only had wins between 1960-1989, and won 2 and 1 editions respectively. Denmark, Germany, Australia 
+and Colombia each won just 1 edition, and all in the last 30 years.<br><br>
+
+From this visualisation we can see a lot about how the wins changed over time. France and Belgium seemed to dominate the field for the first 
+90 years. However, countries such as Spain, the United States and Great Britain have really taken over in the last 30 years. So in relation 
+to the initial questions (What countries have won the most Tour De France editions? Is this consistent over time?) we can conclude that France 
+has had the most wins in total, followed by Belgium, but their wins are not consistent over time and they have each had 0 wins in the past 30 
+years, with countries such as Spain, the United States and Great Britain dominating in the last 30 years.<br><br>
+</td>
+            </tr>
+            <tr>
+               <td style="vertical-align: top;"><strong>Design considerations:</strong></td>
+               <td style="vertical-align: top;">For this visualisation, comparing the total counts for each country was a priority, so I chose a bar chart. 
+               The elementary perceptual task for comparing when using a bar chart is position on a common scale, which is at the top of Cleveland and McGills 
+               ordering of the accuracy of elementary perceptual tasks. Size can sometimes subconsciously be used to compare bars on a bar chart which is not 
+               as accurate, so instead of a simple bar chart a chart such as a dot plot may be more accurate, where position on a common scale is the only 
+               perceptual task at play. However,as well as comparing the totals I was interested in comparing the number the counts for each year range. 
+               For this reason I chose a stacked bar chart.<br><br>
+               
+For very accurate comparisons, a grouped bar chart may have been more accurate, as for a grouped bar chart you are comparing position on a common scale, 
+whereas with a stacked bar chart you are comparing length / position on unaligned scales which are lower in the accuracy ordering. I chose the stacked bar 
+chart, however, as the total counts for each country are more easily seen with the stacked bars. Being able to compare the totals was a priority so I wanted 
+this to be immediately visible, which is most easily seen with the stacked bar chart.<br><br>
+
+I added a tooltip so that by hovering over any section of a bar the country name, year range for that section of the bar, as well as the count for that 
+year range is displayed. This allows for very accurate comparisons to be made between the count for each year range within a country, or to compare counts
+ between countries. This way at a quick glance approximate comparisons can be made, and by using the tooltip very accurate comparisons are easily made.<br><br>
+
+I chose colour to encode the counts for each year range, and chose a simple colour scheme that is colour blind friendly. To check this I put my graph 
+into Coblis and tested how it would appear to people of various types of colour blindness. The colours were distinguishable in each case.<br><br>
+
+I chose a horizontal bar chart as opposed to a vertical one so that the country names could be read horizontally, as this is much easier to read than 
+vertical / slanted text.<br><br>
+</td>
+            </tr>
+            <tr>
+               <td style="width: 200px; vertical-align: top;"><strong>Data filtering and transformation:&nbsp;</strong></td>
+               <td style="vertical-align: top;">I applied data transformations using Python to my data for this task. For each edition of the race 
+               there was a start date column. I extracted the year to make a year column. And then added a year range column, where each row had a 
+               string value of 1900-1929, 1930-1959, 1960-1989 or 1990-2019 depending on the range that the year was in. <br><br>
+               
+                 
+
+               </td>
+            </tr>
+         </tbody>
+      </table>
+      <script type="text/javascript">
+        var yourVlSpec =  {
+
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json", 
+
+  "data": {
+    "url": "https://raw.githubusercontent.com/dervlascully/TourDeFrance/main/TourDeFranceData.csv", 
+    "format": {
+      "type": "csv" }
+  }, 
+  "height" : 600,
+  "width" : 550,
+
+        "mark" : 
+      {
+        "type" : "bar",
+        "size" : 30
+      },
+      "encoding": 
+      {
+        "y" : 
+        {
+          "field" : "Winner Nationality",
+          "type" : "nominal",
+          "sort" : 
+          {
+            "field" : "Winner Nationality",
+            "op" : "count",
+            "order" : "descending"
+          },
+          "axis": 
+          {
+            "labelFontSize" : 11,
+            "titleFontSize" : 12,
+            "titlePadding" : 15,
+            "offset": 5,
+            "title" : null
+          }         
+        },
+        "x" : 
+        {
+          "aggregate" : "count",
+          "type": "quantitative",
+          "axis": 
+          {
+            "labelFontSize" : 11,
+            "titleFontSize" : 12,
+            "titlePadding" : 15,
+            "offset": 5,
+            "title" : "Number of Wins",
+            "tickCount" : 10,
+            "gridOpacity" : 0.4
+          }  
+        },
+        "opacity" : {"value": 0.8},
+        "color": 
+        {
+          "field": "Year Range",
+          "type": "nominal",
+          "scale": {
+            "domain": ["1900-1929", "1930-1959", "1960-1989", "1990-2019"],
+            "scheme":  "tableau10"
+          }
+        },
+        "tooltip": [
+                {
+                  "field" : "Winner Nationality",        
+                  "type" : "nominal",
+                  "title" : "Country"
+                },
+                {
+                  "field" : "Year Range",
+                  "title" : "Year Range",
+                  "type" : "nominal"
+                },
+                {
+                  "field" : "year",
+                  "title" : "Year Range Count",
+                  "type" : "quantitative",
+                  "aggregate" : "count"
+                }
+
+            ]
+      },
+
+      "config": 
+  { 
+    "legend": 
+    {
+      "orient":"bottom-right",
+      "labelFontSize" : 11,
+      "symbolSize" : 200
+    }
+  },
+  "title": 
+  {
+    "text": "Count of Wins by Country", 
+    "anchor": "middle",
+    "fontSize" : 14,
+    "subtitle" : "Tour De France",
+    "subtitlePadding" : 10,
+    "subtitleFontSize" : 12,
+    "subtitleFontWeight" : "bold",
+    "offset" : 20
+  }
+}
+
+
+            vegaEmbed("#vis", yourVlSpec);
+      </script>
+   </body>
+</html>

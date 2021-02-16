@@ -1,0 +1,585 @@
+<html>
+   <head>
+      <title> Visualisation 1 - Dervla Scully</title>
+<script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-lite@4"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+      <style>
+         body {
+         font-family: sans-serif;
+         }
+      </style>
+   </head>
+   <body>
+      <table style="width: 850px;" cellspacing="5" cellpadding="5">
+         <tbody>
+            <tr>
+               <td style="width: 200px; vertical-align: top;"><strong>Name:&nbsp;</strong></td>
+               <td style="vertical-align: top;">Dervla Scully</td>
+            </tr>
+            <tr>
+               <td style="vertical-align: top;"><strong>Student Number:</strong></td>
+               <td style="vertical-align: top;">18329511</td>
+            </tr>
+            <tr>
+               <td style="vertical-align: top;">
+                    <strong>Dataset description:</strong>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>
+                        <a href="https://raw.githubusercontent.com/dervlascully/TourDeFrance/main/TourDeFranceData.csv" target="_blank" rel="noopener">Tour De France Dataset</a>
+                        
+                    </p>
+                    <p>This dataset contains information on the winners of the Tour De France, the annual mens cycling race, from its initial edition in 1903, to 2019. 
+                    It provides information on the winners such as name and nationality, and physical attributes such as height and weight. 
+                    It also provides race details such as the total distance, the overall time and margin times of the winner, the number of stages 
+                    led and won by the winner, and the date of the race. For this visualisation I focused on the winner&#39;s height and weights.</p>
+                </td>
+            </tr>
+            <tr>
+               <td style="vertical-align: top;"><strong>Initial question</strong></td>
+               <td style="vertical-align: top;">How are the heights and weights of the Tour de France winners distributed?
+               <br><br><br><br><br><br><br><br><br><br></td>
+            </tr>
+         </tbody>
+      </table>
+
+      <div id="vis"></div>
+
+      <table style="width: 850px;" cellspacing="5" cellpadding="5">
+         <tbody>
+            <tr>
+               <td style="width: 200px; vertical-align: top;"><strong>Description:&nbsp;</strong></td>
+               <td style="vertical-align: top;">This visualisation shows a histogram and a strip plot for the attributes height, weight and BMI of Tour de 
+               France winners. Each histogram has a shared axis with the corresponding strip plot. The visualisation allows cross filtering between the 
+               histograms using brushing and linking. Bars can be selected in one histogram by clicking and dragging. The corresponding values in the other 
+               histograms are then highlighted. The brush can be dragged to highlight different bars.<br><br>
+
+There is a tooltip on the bars showing the count of records within that bin. There is also a tooltip on the strip plot for each mark showing the winner&#39;s 
+name, the year, their height, weight and BMI.</td>
+            </tr>
+            <tr>
+               <td style="vertical-align: top;"><strong>Insight:</strong></td>
+               <td style="vertical-align: top;">From this visualisation we can see the distributions of weight, height and BMI of Tour de France winners. 
+               After filtering out missing data, and removing duplicates so that only 1 value for height and weight was taken for cyclists who won multiple 
+               times, we are left with 33 values for height, weight and BMI. The BMI is calculated as weight divided by height squared.<br><br>
+
+For weight we can see an approximately bell shaped normal distribution. The values range from 52 kg to 88 kg. The largest peak is between 78-80 kg which 
+makes up 18% of the values. 45% of the values are below this, and the remaining 36% are above it. About 88% of the values are between 60 and 75 kg, with 
+just 2 athletes with a weight below this and 2 with a weight above.<br><br>
+
+For height we can see an approximately normal distribution again, with a slightly less defined bell shape as with weight. The heights range from 1.61 m 
+to 1.9 m. We can see 3 large peaks of equal height between 1.72-1.74, 1.74-1.76 and 1.76-1.78 m, each with 5 athletes within the height range.  Together 
+these make up 45% of the athletes heights. 3 athletes (9%) have a height below 1.65. There are 3 athletes with a height between 1.86-1.88 m, and just 1 
+with a height of 1.9 m. <br><br>
+
+BMI is calculated as weight divided by height squared. For BMI the values range from 19.1 to 27.77. There is a peak between 21.5-22 with 6 athletes in 
+the range making up 18%. 45% of the athlete&#39;s BMIs are below this. The remaining 36% are above 22. We can see 1 athlete with a significantly higher BMI 
+than the rest, with a value of 27.77.<br><br>
+
+We can use the cross filtering to relate the values in each histogram for further analysis. We can first highlight the lightest athlete in the weight 
+histogram. From the tooltip in the strip plot we can see that this athlete is Luis Ocana, the 1973 winner. His height and BMI are now also highlighted. 
+We can see that he is also quite short, with a height in the bottom 9%, with a value of 1.65 m. We can also see that he has the lowest BMI in the dataset, 
+with a BMI of 19.10. Similarly, we can highlight the heaviest athlete, and we can see that this is Francois Faber, the 1909 winner, who weighs 88 kg. We 
+can see that he has quite an average height when compared with the heights of the other athletes. He has a very high BMI however, with the highest BMI in 
+the dataset of 27.77. This is expected as BMI is calculated as weight divided by height squared, so with a heavy weight and average height the BMI will 
+be high. In general, using the cross filtering we can see that the taller athletes are heavier and the shorter athletes are lighter.<br><br> </td>
+            </tr>
+            <tr>
+               <td style="vertical-align: top;"><strong>Design considerations:</strong></td>
+               <td style="vertical-align: top;">I chose a histogram to visualise the distribution of the heights, weights and BMIs as it is a standard 
+               and very effective way of visualising distributions. I plotted each attribute on a separate histogram. The elementary perceptual task for 
+               comparing the counts for each bin is position on a common scale (as well as size) which has shown to be the most accurate perceptual task 
+               (Cleveland & McGill 1984). I kept the gaps between the bars small to highlight the shape of the data and the fact that it is continuous. 
+               The exact count for each bar can be seen using the tooltip. This allows for very accurate comparisons of bin counts. <br><br>
+
+I positioned the strip plots below each histogram and set the scale domain to be the same for each histogram and corresponding strip plot. This meant 
+that each histogram and strip plot had the same x-axis, so I could remove the x-axis from the histogram, and allow the x-axis from the strip plot act 
+as the axis for both. The histograms bin the values, so the advantage of the strip plot is that the actual values can be seen. I added a tool tip on 
+the strip plot showing the winner&#39;s name, the year, and their height, weight and BMI for each mark on the strip plot. So for example if we use brushing 
+and linking to highlight the heaviest cyclist, which we can see on the weight histogram as being in the last bin on the right with a count of 1, we can 
+see that the corresponding height and BMI bins are highlighted, and by using the tooltip we can see that this athlete is Francois Faber, he won the 1909
+ Tour de France, and we can see his exact weight, height and BMI. <br><br>
+
+I used hconcat instead of repeat, which would have been a much shorter solution with less code repetition because using hconcat allowed me to specify
+ different property values for each graph, such as scale domains, bin counts, tick counts. For each attribute (height, weight, BMI) I layered a blue
+  coloured histogram over a light grey histogram, and used selection and transform for the cross filtering, this way when brushing and linking the blue 
+  coloured bars show the highlighted data and the grey bars show the remaining data. For each of these layered histograms I used vconcat to place the
+   corresponding strip plot below the histograms, and set the scale domains to be the same for the histograms and strip plot, before setting the axis 
+   to null for the histograms. Outside of this I used hconcat and repeated the above for the remaining two attributes. <br><br>
+</td>
+            </tr>
+            <tr>
+               <td style="width: 200px; vertical-align: top;"><strong>Data filtering and transformation:&nbsp;</strong></td>
+               <td style="vertical-align: top;">In the dataset there were multiple athletes who won more than 1 Tour de France edition. This was causing 
+               large peaks in my histograms for the heights and weights of these athletes. For example, Lance Armstrong won 7 Tour de France editions, 
+               so for his height and weight alone there was a count of 7. To remedy this I loaded my dataset into a Python pandas dataframe and removed 
+               all rows with duplicate winner&#39;s names, leaving just the first occurrence of each winner, and exported this as a csv file. <br><br>
+               
+               <A HREF="https://raw.githubusercontent.com/dervlascully/TourDeFrance/main/HeightWeightData.csv">Click for dataset</A> <br> <br>
+                  
+               
+               In Vega I also filtered only data with a height 
+               and weight greater than 0. This filtered out missing height and weight values. All of this filtering and manipulation left me with 33 height 
+               and weight values, each corresponding to a unique athlete.<br><br>
+
+I used transform and calculate in Vega to calculate the BMI. Because my height and weight were in metres and kilograms I used the formula 
+BMI = Weight  /  Height x Height. <br><br>
+
+            
+
+</td>
+            </tr>
+         </tbody>
+      </table>
+      <script type="text/javascript">
+        var yourVlSpec =  {
+
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json", 
+
+  "data": {
+    "url": "https://raw.githubusercontent.com/dervlascully/TourDeFrance/main/HeightWeightData.csv", 
+    "format": {
+      "type": "csv" }
+  }, 
+
+
+
+
+  "transform": [
+    {
+      "filter": "datum.Weight > 0"}, 
+    {
+      "filter": "datum.Height > 0" },
+      {
+      "calculate": 
+      "datum.Weight / (datum.Height * datum.Height)",         
+      "as": "BMI"}
+  ],
+
+  "hconcat" : 
+  [
+    {
+      "vconcat": 
+      [
+        {
+          "layer": 
+          [
+            {
+              "selection": 
+              {
+                "brush": {"type": "interval", "encodings": ["x"]}
+              },
+              "mark" : "bar",
+              "height" : 400,
+              "width" : 400,
+        
+              "encoding":
+              {
+                "color": {"value": "#ddd"},
+                "x" : {
+                  "bin" : {"maxbins" : 30},
+                  "field" :  "Weight",
+                  "type" : "quantitative",
+                  "scale" : {"domain" : [50, 90]},
+                  "axis": null        
+                },
+
+                "y":{
+                  "aggregate" : "count",
+                  "type":"quantitative",
+                  "scale" : {"domain" : [0, 7]},
+                  "axis": 
+                    {
+                      "labelFontSize" : 10,
+                      "titleFontSize" : 12,
+                      "titlePadding" : 15,
+                      "tickCount" : 7,
+                      "offset": 5,
+                      "grid": true,
+                      "gridOpacity" : 0.4
+                    }
+                },
+                "opacity" : {"value": 0.8},
+                "tooltip": 
+                [
+                  {
+                    "field" : "Weight",        
+                    "type" : "quantitative",
+                    "aggregate" : "count",
+                    "title" : "Count"
+                  } 
+                ]
+              }
+            },
+            {
+              "transform": [{"filter": {"selection": "brush"}}],
+              "mark" : "bar",
+
+              "height" : 400,
+              "width" : 400,
+            
+              "encoding":
+              {
+                "x" : {
+                  "bin" : {"maxbins" : 30},
+                  "field" :  "Weight",
+                  "type" : "quantitative",
+                  "scale" : {"domain" : [50, 90]},
+                  "axis": null        
+                },
+
+                "y":{
+                  "aggregate" : "count",
+                  "type":"quantitative",
+                  "scale" : {"domain" : [0, 7]}
+                }
+              }
+            }
+          ]
+        },
+        {
+          
+          "mark" : "tick",
+          "width" : 400,
+
+          "encoding": 
+          {
+            "x" : 
+            {
+              "field" :  "Weight",
+              "type" : "quantitative",
+              "scale": {"zero": false, "domain" : [50, 90]},
+              "title" : "Weight (kg)",
+              "axis": 
+              {
+                "labelFontSize" : 10,
+                "titleFontSize" : 12,
+                "titlePadding" : 15,
+                "tickCount" : 10,
+                "offset": 5
+              }   
+            },
+            "tooltip": 
+            [
+              {
+                "field" : "Winner Name",        
+                "type" : "nominal"
+              },
+              {
+                "field" : "year",
+                "title" : "Year"
+              },
+              {
+                "field" : "Weight",
+                 "title" : "Weight (kg)",
+                "type" : "nominal"
+              },
+              {
+                "field" : "Height",
+                "title" : "Height (m)",
+                "type" : "nominal"
+              },
+              {
+                "field" : "BMI",
+                "type" : "nominal",
+                "format": ".2f"
+              }    
+           ]
+          }
+        }
+      ]
+    },
+    {
+      "vconcat": 
+      [
+        {
+          "layer": 
+          [
+            {
+              "selection": 
+              {
+                "brush": {"type": "interval", "encodings": ["x"]}
+              },
+              "mark" : "bar",
+              "height" : 400,
+              "width" : 400,
+        
+              "encoding":
+              {
+                "color": {"value": "#ddd"},
+                "x" : {
+                  "bin" : {"maxbins" : 20},
+                  "field" :  "Height",
+                  "type" : "quantitative",
+                  "scale" : {"domain" : [1.6, 1.95]},
+                  "axis": null        
+                },
+
+                "y":{
+                  "aggregate" : "count",
+                  "type":"quantitative",
+                  "scale" : {"domain" : [0, 6]},
+                  "title" : " ",
+                  "axis": 
+                    {
+                      "labelFontSize" : 10,
+                      "titleFontSize" : 10,
+                      "titlePadding" : 15,
+                      "tickCount" : 6,
+                      "offset": 5,
+                      "grid": true,
+                      "gridOpacity" : 0.4
+                    }
+                },
+                "opacity" : {"value": 0.8},
+                "tooltip": 
+                [
+                  {
+                    "field" : "Height",        
+                    "type" : "quantitative",
+                    "aggregate" : "count",
+                    "title" : "Count"
+                  } 
+                ]
+              }
+            },
+            {
+              "transform": [{"filter": {"selection": "brush"}}],
+              "mark" : "bar",
+
+              "height" : 400,
+              "width" : 400,
+            
+              "encoding":
+              {
+                
+                "x" : {
+                  "bin" : {"maxbins" : 20},
+                  "field" :  "Height",
+                  "type" : "quantitative",
+                  "scale" : {"domain" : [1.6, 1.95]},
+                  "axis": null        
+                },
+
+                "y":{
+                  "aggregate" : "count",
+                  "type":"quantitative",
+                  "scale" : {"domain" : [0, 6]}
+                }
+              }
+            }
+          ]
+        },
+        {
+          "mark" : "tick",
+          "width" : 400,
+
+          "encoding": 
+          {
+            "x" : 
+            {
+              "field" :  "Height",
+              "type" : "quantitative",
+              "scale": {"zero": false, "domain" : [1.6, 1.95]},
+              "title" : "Height (m)",
+              "axis": 
+              {
+                "labelFontSize" : 10,
+                "titleFontSize" : 12,
+                "titlePadding" : 15,
+                "tickCount" : 10,
+                "offset": 5
+              }   
+            },
+            "tooltip": 
+            [
+              {
+                "field" : "Winner Name",        
+                "type" : "nominal"
+              },
+              {
+                "field" : "year",
+                "title" : "Year"
+              },
+              {
+                "field" : "Weight",
+                 "title" : "Weight (kg)",
+                "type" : "nominal"
+              },
+              {
+                "field" : "Height",
+                "title" : "Height (m)",
+                "type" : "nominal"
+              },
+              {
+                "field" : "BMI",
+                "type" : "nominal",
+                "format": ".2f"
+              }
+           ]
+          }
+        }
+      ]
+    },
+    {
+      "vconcat": 
+      [
+        {
+          "layer": 
+          [
+            {
+              "selection": 
+              {
+                "brush": {"type": "interval", "encodings": ["x"]}
+              },
+              "mark" : "bar",
+              "height" : 400,
+              "width" : 400,
+        
+              "encoding":
+              {
+                "color": {"value": "#ddd"},
+                "x" : {
+                  "bin" : {"maxbins" : 30},
+                  "field" :  "BMI",
+                  "type" : "quantitative",
+                  "scale" : {"domain" : [19, 28]},
+                  "axis": null        
+                },
+
+                "y":{
+                  "aggregate" : "count",
+                  "type":"quantitative",
+                  "scale" : {"domain" : [0, 7]},
+                  "title" : " ",
+                  "axis": 
+                    {
+                      "labelFontSize" : 10,
+                      "titleFontSize" : 10,
+                      "titlePadding" : 15,
+                      "tickCount" : 7,
+                      "offset": 5,
+                      "grid": true,
+                      "gridOpacity" : 0.4
+                    }
+                },
+                "opacity" : {"value": 0.8},
+                "tooltip": 
+                [
+                  {
+                    "field" : "BMI",        
+                    "type" : "quantitative",
+                    "aggregate" : "count",
+                    "title" : "Count"
+                  } 
+                ]
+              }
+            },
+            {
+              "transform": [{"filter": {"selection": "brush"}}],
+              "mark" : "bar",
+
+              "height" : 400,
+              "width" : 400,
+            
+              "encoding":
+              {
+                "x" : {
+                  "bin" : {"maxbins" : 30},
+                  "field" :  "BMI",
+                  "type" : "quantitative",
+                  "scale" : {"domain" : [19, 28]},
+                  "axis": null        
+                },
+
+                "y":{
+                  "aggregate" : "count",
+                  "type":"quantitative",
+                  "scale" : {"domain" : [0, 7]}
+                }
+              }
+            }
+          ]
+        },
+        {
+          
+          "mark" : "tick",
+          "width" : 400,
+
+          "encoding": 
+          {
+            "x" : 
+            {
+              "field" :  "BMI",
+              "type" : "quantitative",
+              "scale": {"zero": false,"domain" : [19, 28]},
+              "title" : "BMI (kg / m2)",
+              "axis": 
+              {
+                "labelFontSize" : 10,
+                "titleFontSize" : 12,
+                "titlePadding" : 15,
+                "tickCount" : 10,
+                "offset": 5
+              }   
+            },
+            "tooltip": 
+            [
+              {
+                "field" : "Winner Name",        
+                "type" : "nominal"
+              },
+              {
+                "field" : "year",
+                "title" : "Year"
+              },
+              {
+                "field" : "Weight",
+                 "title" : "Weight (kg)",
+                "type" : "nominal"
+              },
+              {
+                "field" : "Height",
+                "title" : "Height (m)",
+                "type" : "nominal"
+              },
+              {
+                "field" : "BMI",
+                "type" : "nominal",
+                "format": ".2f"
+              }    
+           ]
+          }
+        }
+      ]
+    }
+
+
+  ],
+
+  "resolve": 
+  {
+    "scale": 
+    {
+      "x": "shared"
+    }
+  },
+
+  "title": 
+  {
+    "text": "Histogram with Strip Plot of Weight, Height, BMI", 
+    "anchor": "middle",
+    "fontSize" : 14,
+    "subtitle" : "Tour de France Winners",
+    "subtitlePadding" : 10,
+    "subtitleFontSize" : 12,
+    "subtitleFontWeight" : "bold"
+  },
+  "config": {"concat": {"spacing" : 0}}
+}
+
+            vegaEmbed("#vis", yourVlSpec);
+      </script>
+   </body>
+</html>

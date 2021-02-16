@@ -1,0 +1,360 @@
+<html>
+   <head>
+      <title> Visualisation 3 - Dervla Scully</title>
+<script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-lite@4"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+      <style>
+         body {
+         font-family: sans-serif;
+         }
+      </style>
+   </head>
+   <body>
+      <table style="width: 850px;" cellspacing="5" cellpadding="5">
+         <tbody>
+            <tr>
+               <td style="width: 200px; vertical-align: top;"><strong>Name:&nbsp;</strong></td>
+               <td style="vertical-align: top;">Dervla Scully</td>
+            </tr>
+            <tr>
+               <td style="vertical-align: top;"><strong>Student Number:</strong></td>
+               <td style="vertical-align: top;">18329511</td>
+            </tr>
+            <tr>
+               <td style="vertical-align: top;">
+                    <strong>Dataset description:</strong>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>
+                        <a href="https://raw.githubusercontent.com/dervlascully/TourDeFrance/main/TourDeFranceData.csv" target="_blank" rel="noopener">Tour De France Dataset</a>
+                        
+                    </p>
+                    <p>This dataset contains information on the winners of the Tour De France, the annual mens cycling race, from its initial edition in 1903, to 2019. 
+                    It provides information on the winners such as name and nationality, and physical attributes such as height and weight. 
+                    It also provides race details such as the total distance, the overall time and margin times of the winner, the number of stages 
+                    led and won by the winner, and the date of the race. For this visualisation I focused on the distance and overall time of the winner.</p>
+                </td>
+            </tr>
+            <tr>
+               <td style="vertical-align: top;"><strong>Initial questions</strong></td>
+               <td style="vertical-align: top;">How has the race distance and speed changed over time?<br><br><br></td>
+            </tr>
+         </tbody>
+      </table>
+ 
+      <div id="vis"></div>
+
+      <table style="width: 850px;" cellspacing="5" cellpadding="5">
+         <tbody>
+            <tr>
+               <td style="width: 200px; vertical-align: top;"><strong>Description:&nbsp;</strong></td>
+               <td style="vertical-align: top;">This visualisation is a dual axis line plot showing total distance of the race and average speed of the 
+               winner of the Tour de France editions over time. The left y-axis shows distance in kilometres, with the blue line showing the total race 
+               distance for each Tour de France edition. The right y-axis shows the speed in kilometres per hour, with the yellow line showing the average 
+               speed of the winner for each edition. Time in years is on the x-axis. There is a legend in the bottom right corner showing the colours of 
+               the lines for distance and for average speed. There is a tooltip for each point along each line which shows the year, the winner’s name, 
+               the average speed of the winner and the total distance.</td>
+            </tr>
+            <tr>
+               <td style="vertical-align: top;"><strong>Insight:</strong></td>
+               <td style="vertical-align: top;">From this graph we can see the trends for total distance and for the average speed of the winner 
+               from the first edition of the Tour de France in 1903, to the most recent edition in our dataset in 2019.<br><br>
+
+In the first edition of the race in 1903 we saw the shortest race to date, 2428 km. It was the same distance the following year, followed by 2994 
+km in 1905, and 4637 km in 1906. So within three years the race length increased by a factor of 1.9. This upward trend continued for about 20 years, 
+reaching a maximum race length of 5745 km in 1926. From here we can see a general decreasing trend until the most recent edition in our dataset in 2019. 
+There is a lot of variation in the race lengths, which can be seen by the peaks and troughs of the line. We can see some quite large peaks and drops, 
+for example in 1987 the race was 4231 km, before dropping 3286 the following year, a drop of 945 km. This increased back to 3914 km by 1991. Despite this 
+variation, however, a general downward trend from the mid 1920s is visible. Overall the race distance has decreased over time.<br><br>
+
+In the first edition in 1903 the average speed of the winner was 25.68 km/hr. It stayed within 25 and 26 km/hr for the first 9 years before increasing 
+to about 26.8 in 2013 and 2014, and then dropping to a global minimum of 24.06 in 1919. The figure stayed within 24 and 25 km/hr until 1926. From here 
+we can see a steep increase which reached 28.4 km/hr by 1928 and 31.61 km/hr by 1938. A steady increase  continued for the rest of the editions of the 
+race, reaching a global max of 41.74 in 1998, and reaching 40.37 in the most recent race in our dataset in 2019.<br><br>
+
+We can very clearly see symmetry between the lines for distance and average speed of the winner in our visualisation. The trends seem to mirror each 
+other. Where we saw the longest race distances between 1910 and 1930 we also saw the slowest average speeds. As the race distance decreased over 
+time the average speed in turn increased. This is of course expected, as shorter distances will allow cyclists to keep up faster average speeds. 
+Surprisingly, we can see quite slow average speeds in the first few years from 1903 to 1906 despite these being the shortest races to date. As 
+mentioned previously there is a lot of variation in the race distances from year to year. This variation is mirrored in the average speeds. We 
+can see instances on the graph where there is a sharp drop in race distance, for example in 1971, which is mirrored by a sharp increase in the 
+average speed of the winner. <br><br>
+
+Overall we can see that overtime the average speed of the winners has increased while the distance has decreased. The decrease in the distance 
+is likely a major factor in the speeds increasing, however it is probable that there are other contributing factors. An improvement in race 
+equipment, such as more advanced and better quality bikes and gear, as well as better training facilities will likely have led to cyclists being 
+able to reach faster speeds. Another big factor that would affect race speeds is the use of performance enhancing drugs. Some of the fastest 
+average speeds shown on the graph are by cyclists who it is now known were participating in doping at the time. For example, from 1999 to 2005
+ we can see that Lance Armstrong won 7 editions of the race in a row, and had the 2nd highest average speed overall in 2005 with 41.66 km/hr.
+  It is now well known that he was using performance enhancing drugs and he has since been stripped of his 7 Tour de France titles.
+<br><br>
+</td>
+            </tr>
+            <tr>
+               <td style="vertical-align: top;"><strong>Design considerations:</strong></td>
+               <td style="vertical-align: top;">For this visualisation I chose a line plot as it is very effective at visualising time series. 
+               The elementary perceptual task for comparing points on a line plot is position on a common scale which has shown to be the most 
+               accurate perceptual task (Cleveland & McGill 1984). I decided to use a dual axis so that I could plot distance and average speed 
+               together to compare the trends. I used a different colour for each line and a legend showing which colour relates to which attribute. 
+               To avoid any confusion about the dual axis I coloured each axis and axis label in the colour of that attribute, for example, distance 
+               is in blue so the right y-axis is blue, and the right axis title is blue. This makes it clear when looking for the value of a point on 
+               the line which axis to use. <br><br>
+
+I also added a tooltip for every point along each line which shows the year, the winner&#39;s name, the average speed of the winner and the total
+ distance. This way at a first glance the overall trends are visible, and with a closer look and by using the interactive tooltip one can easily 
+ see the exact values of every point, as well as extra information about the cyclist&#39;s name.<br><br>
+
+I was careful in choosing my colours for this visualisation. I chose two colours which are colourblind friendly together and tested this using 
+Coblis. For each type of color blindness the colours / colour intensities are distinguishable.<br><br>
+
+I added very small points along the lines for each data point. The tooltips are on each point so this just helps to identify where the tooltips
+ can be found. I kept these small so as not to over crowd the graph and cause confusion.
+<br><br>
+</td>
+            </tr>
+            <tr>
+               <td style="width: 200px; vertical-align: top;"><strong>Data filtering and transformation:&nbsp;</strong></td>
+               <td style="vertical-align: top;">I applied data filtering and transformations using Python. My data had distance and time overall 
+               but no speed. There were also missing values for time overall for 1905 to 1912. I first calculated the average speed of each winner
+                by getting the distance divided by the time overall for all rows which were not missing the overall time values. For the missing values 
+                from 1905 to 1912 I calculated the speed as the average of the speeds from 1903 to 1904 and 1913 to 1921.<br><br>
+                 </td>
+            </tr>
+         </tbody>
+      </table>
+      <script type="text/javascript">
+        var yourVlSpec =  {
+
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json", 
+
+
+  "data": 
+  {
+    "url": "https://raw.githubusercontent.com/dervlascully/TourDeFrance/main/TourDeFranceData.csv", 
+
+    "format": 
+    {
+      "type": "csv" 
+    }
+  },
+
+  "width": 850,
+  "height": 450,
+  
+
+  "encoding": 
+  {
+    "x": 
+    {
+      "timeUnit": "year", 
+      "field": "year",
+      "title" : "Year",
+      "axis": 
+        {
+          "labelFontSize" : 11,
+          "titleFontSize" : 13,
+          "titlePadding" : 15,
+          "tickCount" : 10,
+          "grid": true,
+          "gridOpacity" : 0.2,
+          "offset": 10
+        }
+      }
+  },
+  "layer": [
+
+      {
+
+        "mark": 
+        {
+          "type" : "line", 
+          "interpolate": "natural",
+          "point" : true,
+          "size" : 1.8
+        },
+
+
+        "encoding": 
+        {
+
+
+          "y": 
+          {
+            "field": "Distance", 
+            "type": "quantitative",
+            "scale": {"zero": false},
+            "title" : "Total Distance (km)",
+            
+            
+            "axis": 
+            {
+              "titleColor":"#5079a5",
+              "labelFontSize" : 11,
+              "titleFontSize" : 13,
+              "titlePadding" : 15,
+              "offset": 10,
+              "domainColor" : "#5079a5",
+              "domainWidth" : 2,
+              "tickCount" : 11,
+              "gridOpacity" : 0.2,
+              "grid": true
+            }
+          },
+
+
+          "color": 
+          {
+            "datum": "Distance"
+          },
+
+
+          "tooltip": 
+          [
+            {
+              "field": "Winner Name", 
+              "type": "nominal",
+              "title" : "Winner's Name"
+            },
+            {
+              "field": "year", 
+              "timeUnit" : "year",
+              "title" : "Year"
+            },             
+            {
+              "field" : "Average Speed of Winner",
+              "type" : "quantitative",
+              "title" : "Average Speed of Winner (km/hr)",
+              "format": ".2f"
+            },
+            {
+              "field" : "Distance",
+              "type" : "quantitative",
+              "title" : "Total Distance (km)"
+            }
+          ]
+
+
+        }
+    },
+    {
+
+
+        "mark": 
+        {
+          "type" : "line", 
+          "interpolate": "natural",
+          "point" : true
+        },
+
+
+        "encoding": 
+        {
+
+
+          "y": 
+          {
+            "field": "Average Speed of Winner", 
+            "type": "quantitative",
+            "scale": {"zero": false},
+            "title" : "Average Speed of Winner (km / hr)",
+            
+            
+            "axis": 
+            {
+              "titleColor":"#ef8e3b",
+              "labelFontSize" : 11,
+              "titleFontSize" : 13,
+              "titlePadding" : 15,
+              "tickCount" : 10,
+              "offset": 10,
+              "domainColor" : "#ef8e3b",
+              "domainWidth" : 2 
+            }
+          },
+
+
+          "color": 
+          {
+            "datum": "Average Speed of Winner"
+            },
+
+
+          "tooltip": 
+          [
+            {
+              "field": "Winner Name", 
+              "type": "nominal",
+              "title" : "Winner's Name"
+            },
+            {
+              "field": "year", 
+              "timeUnit" : "year",
+              "title" : "Year"
+            },             
+            {
+              "field" : "Average Speed of Winner",
+              "type" : "quantitative",
+              "title" : "Average Speed of Winner (km/hr)",
+              "format": ".2f"
+            },
+            {
+              "field" : "Distance",
+              "type" : "quantitative",
+              "title" : "Total Distance (km)"
+            }
+          ]
+
+
+        }
+    }
+  ],
+
+
+
+  "title": 
+  {
+    "text": "Total Distance & Average Speed of Winner", 
+    "anchor": "middle",
+    "fontSize" : 14,
+    "subtitle" : "Tour De France",
+    "subtitlePadding" : 10,
+    "subtitleFontSize" : 12,
+    "subtitleFontWeight" : "bold"
+  },
+
+
+
+  "resolve": 
+  {
+    "scale": 
+    {
+      "y": "independent"
+    }
+  },
+
+
+
+  "config": 
+  { 
+    "legend": 
+    {
+      "orient":"bottom-right",
+      "labelFontSize" : 12,
+      "symbolStrokeWidth" : 8,
+      "symbolType" : "stroke"
+    },
+    "point": 
+    {
+      "size" : 7
+    }
+  }
+
+
+}
+
+
+            vegaEmbed("#vis", yourVlSpec);
+      </script>
+   </body>
+</html>
